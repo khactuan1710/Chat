@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatApp.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ChatApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ChatApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2074648801/ChatApp.react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-2074648801/ChatApp.react-native-community_masked-view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1052875416/ChatApp.react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/1052875416/ChatApp.react-native-gesture-handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-14498684/ChatApp.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-14498684/ChatApp.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1147638527/ChatApp.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-1147638527/ChatApp.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1814489689/ChatApp.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1814489689/ChatApp.react-native-screens.iml" />
+    </modules>
+  </component>
+</project>
