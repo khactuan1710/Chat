@@ -149,23 +149,52 @@ app.get('/friend/:id', function (req, res) {
 })
 
 
+
+
 //custom api message
 
 app.get('/message', (req, res) => {
-    let select = 'SELECT  message.idMessage, message.idUser, message.message, userchat.username from userchat, message where userchat.idAccount = message.idUser'
+    let select = 'SELECT  message.idMessage, message.idUser, message.message, message.thoiGian, userchat.username from userchat, message where userchat.idAccount = message.idUser'
     db.query(select, (error, result) => {
         if (error) throw error
         return res.send({ error: false, data: result, message: 'list message' })
     })
 })
 
+app.get('/message/:id/:id2', function (req, res) {
+    let message_id = req.params.id;
+    let message_id2 = req.params.id2;
+    if (!message_id) {
+        return res.status(400).send({ error: true, message: 'method getNewsfeedById error' })
+    }
+
+
+    db.query('SELECT  message.idMessage, message.idUser, message.message, message.thoiGian, userchat.username from userchat, message where  message.idUser = ? and userchat.idAccount = ? or message.idUser = ? and userchat.idAccount = ?', [message_id, message_id, message_id2, message_id2], function (error, result) {
+        if (error) throw error
+        return res.send({ error: false, data: result, message: 'get newsfeed by id successfully' })
+    })
+})
+
+
+app.get('/message/:idConversationn', function (req, res) {
+    let idConversationn = req.params.idConversationn;
+    console.log(req.params, 'server');
+    if (!idConversationn) {
+        return res.status(400).send({ error: true, message: 'method getNewsfeedById error' })
+    }
+    db.query('select message.idMessage, message.idUser, message.message, message.thoiGian, message.idConversation , conversation.idConversation , userchat.username from message, conversation, userchat where message.idConversation = ? and conversation.idConversation = ? and message.idUser = userchat.idAccount order by message.idMessage ASC', [idConversationn, idConversationn], function (error, result) {
+        if (error) throw error
+        return res.send({ error: false, data: result, message: 'get newsfeed by id successfully' })
+    })
+})
 
 app.post('/message', function (req, res) {
     let message = req.body
+    console.log(message, 'post message');
     if (!message) {
         return res.status(400).send({ error: true, messgae: 'method post message error' })
     }
-    db.query('INSERT INTO message SET ?', { idUser: message.idUser, message: message.message }, function (error, result) {
+    db.query('INSERT INTO message SET ?', { idUser: message.idUser, message: message.message, thoiGian: message.thoiGian, idConversation: message.idConversation }, function (error, result) {
         if (error) throw error
         return res.send({ error: false, data: result, message: 'mothod post message successfully' })
     })
