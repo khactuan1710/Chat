@@ -3,7 +3,7 @@ import { View, TextInput, Text, Image, TouchableOpacity, } from 'react-native'
 import ListConversations from "./listConversation/ListConversationController";
 import Color from "../../constants/Color/MainColor";
 import ConversationsController from "./ConversationController";
-
+import styles from "./ConversationStyle";
 class Conversation extends React.Component {
     arrFriends = []
     state = {
@@ -25,16 +25,16 @@ class Conversation extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: Color.mainColor }}>
-                <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
-                    <View style={{ height: '40%', width: '90%', flexDirection: 'row', marginTop: 15, borderRadius: 20 }}>
-                        <View style={{ flex: 1, }}>
-                            <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#ffffff', borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }} onPress={() => { this.props.navigation.navigate('ContentChat') }}>
-                                <Image source={require('../../assets/home/search.png')} style={{ height: 25, width: 25, tintColor: '#c4c4c4' }} />
+            <View style={styles.container}>
+                <View style={styles.viewHeader}>
+                    <View style={styles.viewChildHeader}>
+                        <View style={styles.viewBtnSearch}>
+                            <TouchableOpacity style={styles.btnSearch} onPress={() => { this.props.navigation.navigate('ContentChat') }}>
+                                <Image source={require('../../assets/home/search.png')} style={styles.imgSearch} />
                             </TouchableOpacity>
                         </View>
-                        <View style={{ flex: 8 }}>
-                            <TextInput style={{ flex: 1, backgroundColor: '#ffffff', paddingLeft: 15, borderTopRightRadius: 20, borderBottomRightRadius: 20 }} placeholder='search'
+                        <View style={styles.viewInputSearch}>
+                            <TextInput style={styles.textInputSearch} placeholder='search'
                                 onChangeText={(text) => {
                                     this.setState({
                                         searchText: text,
@@ -46,16 +46,16 @@ class Conversation extends React.Component {
                         </View>
                     </View>
                 </View>
-                <View style={{ flex: 0.4, alignItems: 'center' }}>
-                    <View style={{ height: '100%', width: '90%', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Messages</Text>
+                <View style={styles.viewBtnAdd}>
+                    <View style={styles.viewChildBtnAdd}>
+                        <Text style={styles.textMsg}>Messages</Text>
                         <TouchableOpacity>
-                            <Image source={require('../../assets/home/iconThem.png')} style={{ height: 20, width: 20, tintColor: 'red', }} />
+                            <Image source={require('../../assets/home/iconThem.png')} style={styles.imgAdd} />
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{ flex: 10, alignItems: 'center' }}>
-                    <View style={{ height: '100%', width: '90%', }}>
+                <View style={styles.viewListConversation}>
+                    <View style={styles.viewChildListConversation}>
                         <ListConversations listConversations={this.state.arrConversations} searchText={this.state.searchText} searchTextRegex={this.state.searchTextRegex} navigation={this.props.navigation} />
                     </View>
                 </View>

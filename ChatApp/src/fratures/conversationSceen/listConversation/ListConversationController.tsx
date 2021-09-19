@@ -3,6 +3,7 @@ import { Text, View, Image, TouchableOpacity, FlatList } from 'react-native'
 import socket from '../../../socket/Socket';
 import Base64 from '../../../../Base64';
 import { AsyncStorage } from 'react-native';
+import styles from './ListConversations';
 
 class ListConversations extends React.Component {
 
@@ -18,14 +19,10 @@ class ListConversations extends React.Component {
     }
 
     message(username) {
-        socket.connect()
-
-        socket.emit('joinChat', { username })
-
     }
-    navigate(params) {
+    navigate(friendChat) {
         this.props.navigation.navigate('ContentChat', {
-            username: params
+            friendChat: friendChat
         })
     }
 
@@ -39,22 +36,21 @@ class ListConversations extends React.Component {
 
         const partialText = item.username.split(searchTextRegex)
         return (
-            <View style={{ flex: 1, flexDirection: 'column' }}>
-                <TouchableOpacity style={{ height: 70, width: '100%', flexDirection: 'row', marginTop: 15 }}
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.viewUser}
                     onPress={() => (
                         this.message(this.state.userStore.username),
-                        this.navigate(item.username)
+                        this.navigate(item)
                     )}
                 >
-                    <View style={{ flex: 1.2 }}>
-                        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={{ uri: `data:image/png;base64,${avartar}` }} style={{ height: '90%', width: '90%', borderRadius: 15, borderWidth: 1, borderColor: '#ccc' }} />
+                    <View style={styles.viewAvatarFlex}>
+                        <View style={styles.viewAvatar}>
+                            <Image source={{ uri: `data:image/png;base64,${avartar}` }} style={styles.avatar} />
                         </View>
                     </View>
-                    <View style={{ flex: 5, }}>
-                        <View style={{ flex: 1, justifyContent: 'space-around' }}>
-                            {/* <Text style={{ marginLeft: 10, fontWeight: 'bold', fontSize: 16 }}>{item.name}</Text>  */}
-                            <Text style={{ marginLeft: 10, fontWeight: 'bold', fontSize: 16 }}>
+                    <View style={styles.viewNameFlex}>
+                        <View style={styles.viewNameMsg}>
+                            <Text style={styles.textName}>
                                 {partialText.map((part, index) => {
                                     return (
                                         <React.Fragment key={index}>

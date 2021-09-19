@@ -18,6 +18,7 @@
     "base-64": "^1.0.0",
     "react": "17.0.1",
     "react-native": "0.64.1",
+    "react-native-autoscroll-flatlist": "^1.11.0",
     "react-native-base64": "^0.2.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.2.0",

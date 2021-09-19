@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import Base64 from "../../../../Base64";
+import styles from "./NewsFeedsStyle";
 class NewsFeeds extends React.Component {
     state = {
 
@@ -17,46 +18,45 @@ class NewsFeeds extends React.Component {
 
 
         return (
-            <View style={{ flex: 1, marginTop: 15, alignItems: 'center' }} key={item.idNewsfeed}>
-                <View style={{ flex: 1, width: '90%', marginTop: 10 }} >
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={{ flex: 15, flexDirection: 'row' }}>
-                            <TouchableOpacity style={{ height: 50, width: 50, borderRadius: 25, borderWidth: 2, borderColor: '#598DFA', alignItems: 'center', justifyContent: 'center' }}
-
+            <View style={styles.container} key={item.idNewsfeed}>
+                <View style={styles.childContainer} >
+                    <View style={styles.viewHeaderNewsfeed}>
+                        <View style={styles.viewAvartar}>
+                            <TouchableOpacity style={styles.btnAvartar}
                             >
-                                <Image source={{ uri: `data:image/png;base64,${avartar}` }} style={{ height: 46, width: 46, borderRadius: 23 }} resizeMode='contain' />
+                                <Image source={{ uri: `data:image/png;base64,${avartar}` }} style={styles.avartar} resizeMode='contain' />
                             </TouchableOpacity>
-                            <Text style={{ fontWeight: 'bold', marginLeft: 10, fontSize: 15 }}>{item.username}</Text>
+                            <Text style={styles.textNameUser}>{item.username}</Text>
                         </View>
-                        <View style={{ flex: 1, justifyContent: 'center' }}>
+                        <View style={styles.viewMenu}>
                             <TouchableOpacity >
-                                <Image source={require('../../../assets/home/menu.png')} style={{ width: 20, height: 20 }} resizeMode='contain' />
+                                <Image source={require('../../../assets/home/menu.png')} style={styles.imgMenu} resizeMode='contain' />
                             </TouchableOpacity>
                         </View>
 
                     </View>
-                    <Text style={{ fontSize: 15, marginTop: 10 }}>{item.title}</Text>
-                    <View style={{ flex: 4, marginTop: 20 }}>
+                    <Text style={styles.titleNewsfeed}>{item.title}</Text>
+                    <View style={styles.viewImgNewsfeed}>
 
-                        <TouchableOpacity style={{ flex: 1, flexDirection: 'row' }}>
-                            <Image key={item.idNewsfeed} source={{ uri: `data:image/png;base64,${photo}` }} style={{ width: '100%', height: 200, borderRadius: 30, borderWidth: 1, borderColor: '#ccc' }} />
+                        <TouchableOpacity style={styles.btnImgNewsfeed}>
+                            <Image key={item.idNewsfeed} source={{ uri: `data:image/png;base64,${photo}` }} style={styles.imgNewsfeed} />
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <View style={styles.viewActionNewsfeed}>
                         <View style={{ flex: 5, height: 50, flexDirection: 'row' }}>
                             {
-                                item.isLiked ? <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}   >
-                                    <Image source={require('../../../assets/home/likeDo.png')} style={{ width: 25, height: 25 }} />
-                                </TouchableOpacity  > : <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-                                    <Image source={require('../../../assets/home/likeDen.png')} style={{ width: 25, height: 25 }} />
+                                item.isLiked ? <TouchableOpacity style={styles.btnActionNewsfeed}   >
+                                    <Image source={require('../../../assets/home/likeDo.png')} style={styles.imgActionNewsfeed} />
+                                </TouchableOpacity  > : <TouchableOpacity style={styles.btnActionNewsfeed} >
+                                    <Image source={require('../../../assets/home/likeDen.png')} style={styles.imgActionNewsfeed} />
                                 </TouchableOpacity  >
                             }
-                            <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}  >
-                                <Image source={require('../../../assets/home/iconBinhLuan.png')} style={{ width: 25, height: 25 }} />
+                            <TouchableOpacity style={styles.btnActionNewsfeed}  >
+                                <Image source={require('../../../assets/home/iconBinhLuan.png')} style={styles.imgActionNewsfeed} />
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-                                <Image source={require('../../../assets/home/iconChiaSe.png')} style={{ width: 25, height: 25 }} />
+                            <TouchableOpacity style={styles.btnActionNewsfeed} >
+                                <Image source={require('../../../assets/home/iconChiaSe.png')} style={styles.imgActionNewsfeed} />
                             </TouchableOpacity>
                         </View>
                         <View style={{ flex: 3, height: 50 }}>
@@ -65,7 +65,7 @@ class NewsFeeds extends React.Component {
 
                     </View>
                 </View>
-                <View style={{ backgroundColor: '#ebebeb', height: 10, width: '100%' }}>
+                <View style={styles.distanceNewsfeed}>
 
                 </View>
 

@@ -4,7 +4,7 @@ import HomeController from "./HomeController";
 import FriendsRow from "./listFriendRow/FriendsRow";
 import NewsFeeds from "./listFriendNewsFeeds/NewsFeeds";
 import Color from "../../constants/Color/MainColor";
-import { AsyncStorage } from 'react-native';
+import styles from "./HomeStyle";
 class Home extends React.Component {
     state = {
         friendsRow: [],
@@ -33,24 +33,24 @@ class Home extends React.Component {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: Color.mainColor }}>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <View style={{ flex: 4, justifyContent: 'center', paddingLeft: 15, marginTop: 15 }}>
-                        <Text style={{ fontSize: 23, fontWeight: 'bold', color: 'blue' }}>Chat App</Text>
+            <View style={styles.container}>
+                <View style={styles.viewHeader}>
+                    <View style={styles.viewTextHeader}>
+                        <Text style={styles.textHeader}>Chat App</Text>
                     </View>
-                    <View style={{ flex: 1.5, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginTop: 15 }}>
-                        <TouchableOpacity style={{ height: 36, width: 36, backgroundColor: '#c4c4c4', alignItems: 'center', justifyContent: 'center', borderRadius: 18 }}>
-                            <Image source={require('../../assets/home/search.png')} style={{ height: 20, width: 20 }} resizeMode='contain' />
+                    <View style={styles.viewBtnHeader}>
+                        <TouchableOpacity style={styles.btnHeader}>
+                            <Image source={require('../../assets/home/search.png')} style={styles.imgHeader} resizeMode='contain' />
                         </TouchableOpacity >
-                        <TouchableOpacity style={{ height: 36, width: 36, backgroundColor: '#c4c4c4', alignItems: 'center', justifyContent: 'center', borderRadius: 18 }} onPress={() => this.props.navigation.navigate('Conversation')}>
-                            <Image source={require('../../assets/home/chat.png')} style={{ height: 20, width: 20 }} resizeMode='contain' />
+                        <TouchableOpacity style={styles.btnHeader} onPress={() => this.props.navigation.navigate('Conversation')}>
+                            <Image source={require('../../assets/home/chat.png')} style={styles.imgHeader} resizeMode='contain' />
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-around' }}>
-                        <TouchableOpacity style={{ height: 50, width: 50, borderRadius: 25, backgroundColor: '#c4c4c4', alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../assets/home/iconThem.png')} style={{ height: 20, width: 20 }} />
+                <View style={styles.viewRowListFriend}>
+                    <View style={styles.viewBtnRowAdd}>
+                        <TouchableOpacity style={styles.btnRowAdd}>
+                            <Image source={require('../../assets/home/iconThem.png')} style={styles.imgRowAdd} />
                         </TouchableOpacity>
                         <Text>Thêm</Text>
                     </View>
